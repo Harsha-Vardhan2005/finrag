@@ -1,3 +1,12 @@
+---
+title: FinRAG
+emoji: 📈
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+pinned: false
+---
+
 <div align="center">
   
 # FinRAG — Production Financial AI Assistant
