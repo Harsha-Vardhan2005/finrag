@@ -13,9 +13,12 @@ pinned: false
 
 ![Python](https://img.shields.io/badge/Python-3.12-blue?style=for-the-badge&logo=python)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.111-009688?style=for-the-badge&logo=fastapi)
-![Qdrant](https://img.shields.io/badge/Qdrant-Vector_DB-fd1e49?style=for-the-badge&logo=qdrant)
+![Qdrant](https://img.shields.io/badge/Qdrant-Cloud_Vector_DB-fd1e49?style=for-the-badge&logo=qdrant)
 ![Llama3](https://img.shields.io/badge/Llama_3.3-70B-orange?style=for-the-badge&logo=meta)
 ![Groq](https://img.shields.io/badge/Powered_by-Groq-black?style=for-the-badge&logo=groq)
+[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-yellow?style=for-the-badge)](https://huggingface.co/spaces/Harshavard21/FinRAG)
+
+### 🔴 [Live Production Demo on Hugging Face Spaces](https://harshavard21-finrag.hf.space/) 🔴
 
 > **An enterprise-grade Retrieval-Augmented Generation (RAG) system built over the official BSE Annual Reports of 17 major Indian companies.**
 > FinRAG leverages advanced hybrid retrieval, cross-encoder reranking, and semantic caching to deliver lightning-fast, 100% grounded financial insights.
@@ -122,20 +125,24 @@ pip install -r requirements.txt
 ```
 
 2. **Set Environment Variables**
-Create a `.env` file in the root directory:
+Create a `.env` file in the root directory and add your API keys:
 ```env
 GROQ_API_KEY=gsk_your_groq_api_key_here
+QDRANT_URL=https://your-cluster-url.aws.cloud.qdrant.io
+QDRANT_API_KEY=your_qdrant_cloud_api_key
 ```
 
-3. **Start the Qdrant Database (Docker required)**
+3. **Run the Application Locally**
+Since the vectors are hosted on Qdrant Cloud, no local Docker container is needed for the database!
 ```bash
-docker run -p 6333:6333 -p 6334:6334 -v $(pwd)/qdrant_storage:/qdrant/storage:z qdrant/qdrant
+streamlit run app/main.py
 ```
 
-4. **Run the FastAPI Server**
-```bash
-python -X utf8 -m uvicorn app.api.server:app --port 8000 --reload
-```
+4. **Open the UI**
+Navigate to `http://localhost:8501/` in your browser.
 
-5. **Open the UI**
-Navigate to `http://localhost:8000/` in your browser.
+## ☁️ Cloud Deployment (Hugging Face Spaces)
+This application is fully containerized and currently deployed on **Hugging Face Spaces** using Docker.
+- **Git LFS**: Used to efficiently store and serve the 23 heavy PDF Annual Reports without bloating the Git history.
+- **Secrets Management**: API keys (Groq & Qdrant) are securely injected into the Docker container via HF Secrets.
+- **CI/CD**: Pushing to the HF remote triggers an automatic Docker rebuild and zero-downtime deployment.
