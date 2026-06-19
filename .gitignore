@@ -1,0 +1,52 @@
+# ============================================================
+# .gitignore for Production Financial RAG Project
+# ============================================================
+
+# Environment / secrets — NEVER commit this
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+
+# Virtual environments
+venv/
+env/
+.venv/
+ENV/
+
+# Data directories (large files, auto-generated)
+data/qdrant_store/
+data/processed/
+
+# Model cache (downloaded locally, ~1-3GB)
+.cache/
+models/
+
+# Jupyter / IDE
+.ipynb_checkpoints/
+*.ipynb
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+logs/
+*.log
+
+# Streamlit
+.streamlit/secrets.toml

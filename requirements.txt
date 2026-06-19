@@ -1,0 +1,48 @@
+# ============================================================
+# Production Financial RAG — Requirements
+# Python 3.12+ | CUDA-enabled (RTX 3050)
+# ============================================================
+
+# --- PDF Parsing ---
+PyMuPDF==1.24.11          # Fast PDF text + layout (bounding boxes, font info)
+pdfplumber==0.11.4         # Table extraction from PDFs
+easyocr==1.7.2             # OCR fallback for scanned pages
+
+# --- Embeddings & Models ---
+sentence-transformers==3.3.1   # BAAI/bge-large + BGE reranker (cross-encoder)
+torch>=2.1.0                   # PyTorch (install CUDA version separately if needed)
+transformers==4.47.1           # HuggingFace model hub
+
+# --- Vector Store ---
+qdrant-client==1.12.1          # Qdrant vector DB (local mode, HNSW)
+
+# --- Sparse Retrieval ---
+rank-bm25==0.2.2               # BM25 keyword index
+
+# --- LLM (Groq) ---
+groq==0.13.0                   # Groq API client
+langchain==0.3.12              # Orchestration framework
+langchain-groq==0.2.3          # LangChain x Groq integration
+langchain-community==0.3.12    # Community integrations
+
+# --- Evaluation ---
+ragas==0.2.6                   # RAG evaluation framework (Faithfulness, Relevance etc.)
+datasets==3.2.0                # HuggingFace datasets (used by RAGAS)
+
+# --- UI ---
+streamlit==1.41.1              # Web UI framework
+plotly==5.24.1                 # Interactive charts for financial dashboards
+
+# --- Data Processing ---
+pandas==2.2.3                  # DataFrames for structured metric extraction
+numpy==1.26.4                  # Numerical ops
+tqdm==4.67.1                   # Progress bars for ingestion pipeline
+pydantic==2.10.4               # Data validation / settings management
+pydantic-settings==2.7.0       # Settings from .env file
+
+# --- Utilities ---
+python-dotenv==1.0.1           # Load .env variables
+loguru==0.7.3                  # Better logging than stdlib logging
+tenacity==9.0.0                # Retry logic for API calls
+colorama==0.4.6                # Colored terminal output
+rich==13.9.4                   # Rich terminal output for CLI scripts
