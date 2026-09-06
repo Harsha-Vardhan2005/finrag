@@ -8,7 +8,7 @@ pinned: false
 ---
 
 <div align="center">
-  
+
 # FinRAG — Production Financial AI Assistant
 
 ![Python](https://img.shields.io/badge/Python-3.12-blue?style=for-the-badge&logo=python)

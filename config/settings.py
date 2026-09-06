@@ -45,7 +45,7 @@ class Settings(BaseSettings):
     # Models
     # ------------------------------------------------------------------ #
     groq_api_key: str = Field(default="")
-    groq_model: str = Field(default="llama-3.3-70b-versatile")
+    groq_model: str = Field(default="openai/gpt-oss-120b")
 
     embedding_model: str = Field(default="BAAI/bge-large-en-v1.5")
     embedding_dim: int = Field(default=1024)          # bge-large output dimension (NOT 768 — that's bge-base)

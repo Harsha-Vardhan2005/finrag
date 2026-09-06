@@ -43,8 +43,11 @@ def migrate():
         cloud_client.create_collection(
             collection_name=collection_name,
             vectors_config=local_info.config.params.vectors,
-            hnsw_config=local_info.config.hnsw_config.model_dump() if hasattr(local_info.config.hnsw_config, 'model_dump') else local_info.config.hnsw_config.dict()
         )
+        from qdrant_client.models import PayloadSchemaType
+        for f in ['chunk_id', 'parent_chunk_id', 'company', 'ticker', 'source_file', 'fiscal_year', 'section', 'subsection', 'content_type', 'chunk_level']:
+            cloud_client.create_payload_index(collection_name=collection_name, field_name=f, field_schema=PayloadSchemaType.KEYWORD)
+        cloud_client.create_payload_index(collection_name=collection_name, field_name='page_number', field_schema=PayloadSchemaType.INTEGER)
 
     # 4. Migrate points in batches
     print("Starting migration...")
