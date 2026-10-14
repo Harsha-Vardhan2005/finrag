@@ -28,6 +28,7 @@ langchain-community==0.3.12    # Community integrations
 # --- Evaluation ---
 ragas==0.2.6                   # RAG evaluation framework (Faithfulness, Relevance etc.)
 datasets==3.2.0                # HuggingFace datasets (used by RAGAS)
+pyarrow==18.1.0                # Pin compatible with numpy 1.26.4
 
 # --- UI / API ---
 fastapi==0.111.0               # REST API backend
